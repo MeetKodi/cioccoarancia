@@ -1,0 +1,38 @@
+$spaces: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100);
+$sides: (
+  "": "all",
+  "t": "top",
+  "b": "bottom",
+  "l": "left",
+  "r": "right",
+  "x": "x",
+  "y": "y"
+);
+
+@each $space in $spaces {
+  @each $prefix, $value in $sides {
+    $property: if($prefix == '', '', -#{$value});
+    .m#{$prefix}-#{$space} {
+      @if ($prefix == 'x') {
+        margin-left: #{$space}px !important;
+        margin-right: #{$space}px !important;
+      } @else if ($prefix == 'y') {
+        margin-top: #{$space}px !important;
+        margin-bottom: #{$space}px !important;
+      } @else {
+        margin#{$property}: #{$space}px;
+      }
+    }
+    .p#{$prefix}-#{$space} {
+      @if ($prefix == 'x') {
+        padding-left: #{$space}px !important;
+        padding-right: #{$space}px !important;
+      } @else if ($prefix == 'y') {
+        padding-top: #{$space}px !important;
+        padding-bottom: #{$space}px !important;
+      } @else {
+        padding#{$property}: #{$space}px !important;
+      }
+    }
+  }
+}

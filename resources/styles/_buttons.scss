@@ -1,0 +1,32 @@
+.btn {
+  display: inline-block;
+  padding: 10px;
+  border: 4px solid #000;
+  text-decoration: none;
+  font-family: 'Andale Mono', sans-serif;
+  font-size: 20px;
+  color: #000;
+  cursor: pointer;
+  transition: all .2s ease;
+  &.btn-block {
+    display: block;
+  }
+  &.btn-rounded {
+    border-radius: 30px;
+  }
+  &.btn-brown {
+    background-color: #f28508;
+    color: #fff;
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+  }
+  &:hover {
+    background: #f28508;
+    color: #fff;
+  }
+  &:active {
+    box-shadow: inset 1px 1px 2px rgba(0,0,0, .8);
+  }
+}
