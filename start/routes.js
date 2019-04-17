@@ -16,4 +16,5 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
+Route.post('contact', 'ContactController.sendMessage');
 Route.any('*', ({ view }) => view.render('index'));

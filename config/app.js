@@ -17,6 +17,7 @@ module.exports = {
 
   name: Env.get('APP_NAME', 'AdonisJs'),
   url: Env.get('APP_URL', 'http://localhost'),
+  adminEmail: Env.get('APP_ADMIN_EMAIL'),
 
   /*
   |--------------------------------------------------------------------------

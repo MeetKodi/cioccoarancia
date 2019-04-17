@@ -22,6 +22,7 @@ const providers = [
   '@adonisjs/session/providers/SessionProvider',
   '@adonisjs/auth/providers/AuthProvider',
   '@adonisjs/validator/providers/ValidatorProvider',
+  '@adonisjs/mail/providers/MailProvider',
   path.join(__dirname, '..', 'providers', 'ExistsValidatorProvider'),
   path.join(__dirname, '..', 'providers', 'ExtendViewProvider')
 ];
