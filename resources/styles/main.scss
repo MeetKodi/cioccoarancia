@@ -17,6 +17,7 @@ body {
 
 .page-home {
   display: flex;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -25,7 +26,8 @@ body {
 .logo {
   width: 425px;
   height: 500px;
-  background: url("img/logo.png");
+  background: url("img/logo.png") no-repeat;
+  background-size: contain;
   cursor: pointer;
 }
 
