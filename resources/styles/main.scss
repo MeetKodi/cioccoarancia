@@ -322,6 +322,7 @@ body {
         width: 85px;
         .ci-title {
           padding-right: 0;
+          padding-left: 0;
         }
         &:nth-child(2) {
           left: 60px;
@@ -484,8 +485,8 @@ body {
       height: 730px;
       .ci-title {
         position: absolute;
-        right: 165px;
-        padding: 5px 120px 50px 20px;
+        right: 45px;
+        padding: 5px 0 50px;
       }
       .ci-body {
         width: 0;
@@ -500,8 +501,8 @@ body {
       z-index: 3;
       .ci-title {
         position: absolute;
-        right: 165px;
-        padding: 5px 145px 25px 90px;
+        right: 25px;
+        padding: 5px 0 25px;
       }
       .ci-body {
         width: 0;
@@ -599,7 +600,7 @@ body {
   }
 
   .ci-title {
-    padding: 5px 80px 90px 90px;
+    padding: 5px 80px 90px 60px;
     font-family: 'Alte Haas Grotesk Bold', sans-serif;
     font-size: 50px;
     writing-mode: tb-rl;
@@ -608,7 +609,7 @@ body {
   }
 
   .ci-body {
-    padding: 150px 50px 10px 0;
+    padding: 150px 50px 10px 20px;
     overflow: hidden;
   }
 }
