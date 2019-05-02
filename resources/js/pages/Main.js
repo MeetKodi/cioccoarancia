@@ -2,6 +2,7 @@ import _ from 'lodash';
 import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Manifest, CantChoose, Shop, Support } from './includes';
 
 /**
  * Class Main
@@ -28,6 +29,7 @@ class Main extends React.Component {
         borderedOpen: false
       },
       form: {
+        sent: false,
         status: 'success',
         message: null
       }
@@ -53,7 +55,6 @@ class Main extends React.Component {
    */
   componentDidMount() {
     console.debug(this.props.location);
-    console.debug(this.props.match.params.page);
     this.setState({
       page: this.props.match.params.page,
       color: _.get(this.props.location, 'state.color', 'white'),
@@ -112,7 +113,8 @@ class Main extends React.Component {
     this.setState({
       mainContent: {
         ...this.state.mainContent,
-        borderedOpen: open
+        borderedOpen: open,
+        part: 'cmp-1'
       }
     })
   }
@@ -148,6 +150,7 @@ class Main extends React.Component {
    */
   submitContactForm(e) {
     e.preventDefault();
+    const email = e.target[1].value;
     const message = e.target[0].value;
     const minLength = 10;
     if (message < minLength) {
@@ -162,6 +165,7 @@ class Main extends React.Component {
     }
 
     axios.post('/contact', {
+      email,
       message
     })
       .then(response => {
@@ -169,6 +173,7 @@ class Main extends React.Component {
         this.setState({
           form: {
             ...this.state.form,
+            sent: true,
             status: 'success',
             message: response.data
           }
@@ -235,39 +240,30 @@ class Main extends React.Component {
           </div>
           <div className="side-block sb-2">
             <div className={'sb-content sbc-1' + (sideBlockNum === 2 ? ' d-none' : '')}>
-              <div className="sbc-tree-img" />
-              <p>
-                cioccolato all’arancia e<br />
-                uno spettacolo teatrale.
-              </p>
-              <p>cioccolato all’arancia e un Movimento.</p>
-              <p>
-                cioccolato all’arancia e la comunita d’indecisi.
-              </p>
+              <Link className="sbc-tree-img" to="/" />
+              <p>cioccolato all’arancia è<br />uno spettacolo teatrale.</p>
+              <p>indecisi per scelta è<br />il movimento degli indecisi.</p>
             </div>
             <div className={'sb-content sbc-2' + (sideBlockNum === 1 ? ' d-none' : '')}>
-              <p>
-                chi siamo (anche se non<br />
-                l’abiamo ancora se ce lo stiamo<br />
-                ancora chiedendo)
-              </p>
+              <div className="sbc-title">chi siamo</div>
+              <p>(anche se ce lo stiamo ancora chiedendo)</p>
               <div className="sbc-title">Supercat</div>
               <p>
-                chi siamo (anche se non<br />
-                l’abiamo ancora se ce lo stiamo<br />
-                ancora chiedendo)
+                è la responsabile di tutto.<br />
+                aveva paura di essere l’unica indecisa al mondo.<br />
+                Ha capito di essere in buona compagnia.
               </p>
               <div className="sbc-title">Superdafne</div>
               <p>
-                chi siamo (anche se non<br />
-                l’abiamo ancora se ce lo stiamo<br />
-                ancora chiedendo)
+                è la regista dello spettacolo.<br />
+                Quando le hanno chiesto di “lavorare” alla regia<br />
+                di Cioccolato all’Arancia lei aveva capito “mangiare”.
               </p>
               <div className="sbc-title">Quello napoletano</div>
               <p>
-                chi siamo (anche se non<br />
-                l’abiamo ancora se ce lo stiamo<br />
-                ancora chiedendo)
+                è l’art director del movimento.<br />
+                Creativo errante,<br />
+                possiede camicie e calzini improponibili. E’ drogato di cioccolato.
               </p>
             </div>
             <div className={`sbc-toggler sbc-type-${sideBlockNum}`}>
@@ -282,8 +278,16 @@ class Main extends React.Component {
             <div className="cm-part">
               <div className={'cm-bordered' + (borderedOpen ? ' opened' : '')}>
                 <div className="cmb-title">Cioccolato Al’arancia</div>
-                di e con Martina Gatto<br />
-                regia e supervisione drammaturgica Dafne Rubini
+                <p>
+                  di e con Martina Gatto<br />
+                  regia e supervisione drammaturgica Dafne Rubini
+                </p>
+                <p>
+                  direzione creativa Ivan Specchio<br />
+                  luci Alessio Pascale<br />
+                  suono Giulio Gaigher<br />
+                  ufficio stampa Tommaso Caldarelli
+                </p>
                 {borderedOpen ? (
                   <div className="press-arrow back" onClick={() => this.toggleBorderedContent(false)}>
                     sinossi
@@ -292,20 +296,20 @@ class Main extends React.Component {
                   <div className="press-arrow" onClick={() => this.toggleBorderedContent(true)}>press</div>
                 )}
                 <div className="cmb-content">
-                  Some content here...
                   <div className="mt-40">
                     manifesto dello<br />
                     spettacolo teatrale<br />
-                    <a href="#">download press</a>
+                    <a href="https://www.dropbox.com/sh/fpuo7iy3wj2xbjt/AAAXujBNa16-yZFnVSrPi6gWa?dl=0" target="_blank">download press</a>
                   </div>
                 </div>
               </div>
               {!borderedOpen && <div>
-                Ci sono momenti nella vita in cui tutto cio che abbiamo attorno sembra cambriare improvvisamente.
+                <p>Ci sono momenti nella vita in cui tutto ciò che abbiamo attorno sembra cambiare improvvisamente. E’ come se un terremoto aprisse una voragine. Gli interrogativi prendono il sopravvento e si mette tutto in discussione, ci ritroviamo sballottati tra i sogni e la realtà, tra il volere e il dovere, tra il cuore e la testa, tra il dolce del cioccolato e l’amaro dell’arancia.</p>
+                <p>In situazioni come queste, regalarsi una pausa prendendo un gelato che rinfreschi corpo e mente è quello che ci vuole. Il problema è solo uno: scegliere i gusti e fare l’abbinamento perfetto. E’ meglio cioccolato normale o provare quello all’arancia? Per poi abbinarlo con menta o stracciatella? E se poi l’abbinamento non mi piace? E se volessi provare tutti i gusti? Questi e molti altri sono i dubbi che tartassano la protagonista di “Cioccolato all’arancia”, una ragazza ossessionata dall’ansia di prendere la scelta giusta. Per il gelato e per la vita. Perché a volte, per riconoscere quel che ci piace davvero dobbiamo avere il coraggio di perderci e anche, forse, di assaggiare quel che non ci piace...</p>
               </div>}
               <div className="text-center mt-75">
                 <span className="btn btn-brown px-40" onClick={() => this.switchContentPart('cmp-2')}>
-                  portalo nella tua città
+                  portaci nella tua città
                 </span>
               </div>
             </div>
@@ -317,23 +321,36 @@ class Main extends React.Component {
                 <div className="bb-title">portaci nella tua città</div>
                 <div className="chairs-bg" />
                 <div className="bb-text-big">
-                  portaci nella tua città e la cosa piu semplice dopo mangiare il babà a Napoli
+                  portaci nella tua città è la cosa più semplice dopo mangiare il babà a Napoli!
                 </div>
                 <div className="bb-desc">
-                  tutto quello che occore e un palco, una sedia, una bottiglietta d'acqua, un camerino, ma anche la macchina it's ok una pizza da mangiarci insieme prima e dopo lo spettacolo
+                  tutto quello che occorre è un palco, una sedia, una bottiglietta d'acqua, anzi due (l’attrice beve molto), un camerino, ma anche la macchina it's ok, una pizza da mangiarci insieme prima e dopo lo spettacolo e ovviamente un gelato!
                 </div>
-                <div className="bb-form">
-                  <form onSubmit={this.submitContactForm}>
-                    <textarea placeholder="il tuo messagio" />
-                    <span className={`form-status ${this.state.form.status}`}>
+                {this.state.form.sent && this.state.form.status === 'success'
+                  ? (
+                    <div className="bb-sent">
+                      <div className="bb-s-title">grazie!</div>
+                      ti risponderemo al più presto
+                      <button className="btn btn-rounded btn-block" onClick={() => this.toggleBorderedContent(true)}>hai visitato la nostra press?</button>
+                    </div>
+                  )
+                  : (
+                    <div className="bb-form">
+                      <form onSubmit={this.submitContactForm}>
+                        <textarea placeholder="il tuo messagio" required />
+                        <span className={`form-status ${this.state.form.status}`}>
                       {this.state.form.message}
                     </span>
-                    <button type="submit">invia</button>
-                  </form>
-                </div>
+                        <div className="bb-f-bottom">
+                          <input type="email" placeholder="la tua email" required />
+                          <button type="submit">invia</button>
+                        </div>
+                      </form>
+                    </div>
+                  )}
                 <div className="bb-contact-details">
                   o scrivi a<br />
-                  <a href="mailto:">stefaniamartuscelli@cioccolatollarancia.com</a>
+                  <a href="mailto:">cioccolatoallarancia@gmail.com</a>
                 </div>
               </div>
             </div>
@@ -346,18 +363,16 @@ class Main extends React.Component {
             >
               <div className="ci-title">manifesto</div>
               <div className="ci-body">
-                Al tavolino di un bar con il menu in mano,<br />
-                di quelli che uno come te, girando e rigirando le pagine, li consuma durante una semplice ordinazione /<br />
-                di fronte
+                <Manifest />
               </div>
             </div>
             <div
               className={(page === 'cantchoose' ? 'active ' : '') + 'content-item'}
               onClick={() => this.changeContent('cantchoose')}
             >
-              <div className="ci-title">#nonsoscegliere</div>
+              <div className="ci-title">#indecisiperscelta</div>
               <div className="ci-body">
-                Some content here...
+                <CantChoose />
               </div>
             </div>
             <div
@@ -365,7 +380,7 @@ class Main extends React.Component {
               onClick={() => this.changeContent('shop')}
             >
               <div className="ci-body">
-                Some content here...
+                <Shop />
               </div>
               <div className="ci-title">shop</div>
             </div>
@@ -374,7 +389,7 @@ class Main extends React.Component {
               onClick={() => this.changeContent('support-us')}
             >
               <div className="ci-body">
-                Some content here...
+                <Support />
               </div>
               <div className="ci-title">sostienici</div>
             </div>

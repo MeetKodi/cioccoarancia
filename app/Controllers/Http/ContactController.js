@@ -27,7 +27,7 @@ class ContactController {
         .subject('Contact message');
     });
 
-    return response.send('The message had been sent!');
+    return response.send('Grazie!');
   }
 }
 
