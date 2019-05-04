@@ -202,7 +202,7 @@ module.exports = {
     console: {
       driver: 'console',
       name: 'adonis-app',
-      level: 'debug'
+      level: Env.get('APP_LOGGER_CONSOLE_LEVEL', 'debug'),
     },
 
     /*
