@@ -351,7 +351,7 @@ class Main extends React.Component {
                   )}
                 <div className="bb-contact-details">
                   o scrivi a<br />
-                  <a href="mailto:">cioccolatoallarancia@gmail.com</a>
+                  <a href="mailto:info@cioccolatoallarancia.com">info@cioccolatoallarancia.com</a>
                 </div>
               </div>
             </div>
