@@ -24,12 +24,12 @@ class ExtendViewProvider extends ServiceProvider {
     const config = {
       name: Config.get('app.name'),
       url: Config.get('app.url'),
-      logLevel: Config.get('app.logger.console.level')
+      logLevel: Config.get('app.logger.console.level'),
     };
-    //View.global('config', JSON.stringify(config));
-    View.global('config', function() {
+    View.global('config', JSON.stringify(config));
+    /*View.global('config', function() {
       return this.safe(config);
-    });
+    });*/
   }
 }
 

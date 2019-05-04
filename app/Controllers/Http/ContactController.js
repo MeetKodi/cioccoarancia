@@ -1,7 +1,9 @@
 'use strict';
 
+const _ = use('lodash');
 const Mail = use('Mail');
 const Config = use('Config');
+const axios = use('axios');
 
 /**
  * Class ContactController
@@ -23,11 +25,44 @@ class ContactController {
       message
         .to(adminEmail)
         .from(adminEmail)
-        //.inReplyTo('')
+        .replyTo(data.email)
         .subject('Contact message');
     });
 
     return response.send('Grazie!');
+  }
+
+  /**
+   * Registers email address to the main MailChimp list
+   *
+   * @param request
+   * @param response
+   * @returns {Promise<boolean | void>}
+   */
+  async registerEmail({ request, response }) {
+    const { email } = request.only(['email']);
+    const url = Config.get('services.mailChimp.url');
+    const api = Config.get('services.mailChimp.api');
+    const listId = Config.get('services.mailChimp.lists.main');
+
+    try {
+      await axios.post(`${url}/lists/${listId}/members`,
+        {
+          email_address: email,
+          status: 'subscribed'
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${api}`
+          }
+        }
+      );
+    } catch (e) {
+      const message = _.get(e, 'response.data.title') || e.message || 'Unknown error.';
+      throw new Error(message);
+    }
+
+    return response.send(email);
   }
 }
 

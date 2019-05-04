@@ -17,4 +17,5 @@
 const Route = use('Route');
 
 Route.post('contact', 'ContactController.sendMessage');
+Route.post('register', 'ContactController.registerEmail');
 Route.any('*', ({ view }) => view.render('index'));

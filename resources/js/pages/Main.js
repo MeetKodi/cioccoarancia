@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import logger from '../logger';
 import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -54,7 +55,7 @@ class Main extends React.Component {
    * @inheritDoc
    */
   componentDidMount() {
-    console.debug(this.props.location);
+    logger.debug(this.props.location);
     this.setState({
       page: this.props.match.params.page,
       color: _.get(this.props.location, 'state.color', 'white'),
@@ -169,7 +170,7 @@ class Main extends React.Component {
       message
     })
       .then(response => {
-        console.debug(response);
+        logger.debug(response);
         this.setState({
           form: {
             ...this.state.form,
@@ -190,7 +191,7 @@ class Main extends React.Component {
             message
           }
         });
-      })
+      });
   }
 
   /**
@@ -205,7 +206,7 @@ class Main extends React.Component {
     const sideBlockNum = this.state.sideBlockContentNum;
 
     return (
-      <div className="page-main">
+      <div className={`page-main template-${this.state.color}`}>
         <div className={`side-left sl-${this.state.logoTemplate}`}>
           <div className="template-toggler" onClick={() => this.toggleLogoTemplate()} />
           <div className="side-block sb-1">
@@ -232,9 +233,9 @@ class Main extends React.Component {
             <div className="share-block">
               assaggiaci
               <div className="social-icons">
-                <a className="si-tw" href="#" target="_blank" />
-                <a className="si-im" href="#" target="_blank" />
-                <a className="si-fb" href="#" target="_blank" />
+                <a className="si-tw" href="https://www.tumblr.com/blog/cioccolatoallarancia" target="_blank" />
+                <a className="si-im" href="https://www.instagram.com/cioccolatoallarancia/" target="_blank" />
+                <a className="si-fb" href="https://www.facebook.com/cioccolatoarancia/" target="_blank" />
               </div>
             </div>
           </div>

@@ -1,11 +1,14 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
+import _ from "lodash";
 
 class Shop extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      sent: false
+      sent: false,
+      message: null
     };
 
     this.registerMail = this.registerMail.bind(this);
@@ -16,7 +19,14 @@ class Shop extends Component {
     const email = e.target[0].value;
 
     if (email.length > 5 && !this.state.sent) {
-      this.setState({ sent: true });
+      axios.post('/register', { email })
+        .then(() => {
+          this.setState({ sent: true, message: null });
+        })
+        .catch(err => {
+          const message = _.get(err, 'response.data.error.message') || err.message;
+          this.setState({ message })
+        });
     }
   }
 
@@ -50,6 +60,7 @@ class Shop extends Component {
               <input type="email" placeholder="digita email" required /><br />
               <button className="btn btn-rounded">{buttonTitle}</button>
             </form>
+            {this.state.message && <div className="text-danger">{this.state.message}</div>}
             <p>
               sii furbo. registrati oggi<br />
               e avrai il 15 per cento di sconto<br />
