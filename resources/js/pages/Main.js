@@ -233,9 +233,9 @@ class Main extends React.Component {
             <div className="share-block">
               assaggiaci
               <div className="social-icons">
-                <a className="si-tw" href="https://www.tumblr.com/blog/cioccolatoallarancia" target="_blank" />
                 <a className="si-im" href="https://www.instagram.com/cioccolatoallarancia/" target="_blank" />
                 <a className="si-fb" href="https://www.facebook.com/cioccolatoarancia/" target="_blank" />
+                <a className="si-yb" href="https://www.tumblr.com/blog/cioccolatoallarancia" target="_blank" />
               </div>
             </div>
           </div>
