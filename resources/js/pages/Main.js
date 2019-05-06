@@ -217,7 +217,7 @@ class Main extends React.Component {
             <div className="poster-text">
               <span>prossima data</span>
               9, 10, 11 Maggio Teatro lo Spazio
-              <div className="btn btn-block btn-rounded mt-30">acquista bigletti</div>
+              <div className="btn btn-block btn-rounded mt-30">acquista biglietti</div>
               {page !== 'more'
               ? (
                   <div className="btn btn-block btn-rounded mt-10" onClick={() => this.changeContent('more')}>
