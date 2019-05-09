@@ -25,6 +25,7 @@ class Main extends React.Component {
       color: 'white',
       logoTemplate: 'white',
       sideBlockContentNum: 1,
+      showWhatsappInfo: false,
       mainContent: {
         part: 'cmp-1',
         borderedOpen: false
@@ -49,6 +50,7 @@ class Main extends React.Component {
     this.toggleBorderedContent = this.toggleBorderedContent.bind(this);
     this.toggleLogoTemplate = this.toggleLogoTemplate.bind(this);
     this.toggleSideBlockContent = this.toggleSideBlockContent.bind(this);
+    this.toggleWhatsappInfo = this.toggleWhatsappInfo.bind(this);
   }
 
   /**
@@ -195,6 +197,13 @@ class Main extends React.Component {
   }
 
   /**
+   * Shows/hides Whatsapp number
+   */
+  toggleWhatsappInfo() {
+    this.setState({ showWhatsappInfo: !this.state.showWhatsappInfo });
+  }
+
+  /**
    * @inheritDoc
    * @returns {*}
    */
@@ -217,7 +226,15 @@ class Main extends React.Component {
             <div className="poster-text">
               <span>prossima data</span>
               9, 10, 11 Maggio Teatro lo Spazio
-              <div className="btn btn-block btn-rounded mt-30">acquista biglietti</div>
+              {this.state.showWhatsappInfo && <div className="whatsapp-info">
+                <span className="close" onClick={() => this.toggleWhatsappInfo()}>X</span>
+                <a href="https://api.whatsapp.com/send?phone=393932191275&text=%20Hola!" target="_blank">
+                  +39 393 219 1275
+                </a>
+              </div>}
+              <div className="btn btn-block btn-rounded mt-30" onClick={() => this.toggleWhatsappInfo()}>
+                acquista biglietti
+              </div>
               {page !== 'more'
               ? (
                   <div className="btn btn-block btn-rounded mt-10" onClick={() => this.changeContent('more')}>
