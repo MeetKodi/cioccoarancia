@@ -15,7 +15,7 @@ class Support extends Component {
         <p>Scopri tutti i modi in cui puoi sostenerci.</p>
         <p>
           Scrivi a<br />
-          <a href="mailto:indecisiperscelta@gmail.com">indecisiperscelta@gmail.com</a>
+          <a href="mailto:movimento@cioccolatoallarancia.com">movimento@cioccolatoallarancia.com</a>
         </p>
       </Fragment>
     );

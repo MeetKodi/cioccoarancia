@@ -12,7 +12,7 @@ class Scegli extends Component {
           </p>
           <p>
             come si può richiedere?<br />
-            Scrivici a <a href="mailto:indecisiperscelta@gmail.com">indecisiperscelta@gmail.com</a>
+            Scrivici a <a href="mailto:movimento@cioccolatoallarancia.com">movimento@cioccolatoallarancia.com</a>
           </p>
         </div>
       </Fragment>

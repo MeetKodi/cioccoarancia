@@ -6,8 +6,8 @@ class Main extends Component {
       <Fragment>
         <p>Sì, tutto molto bello, ma... cosa fa un Indeciso per Scelta?</p>
         <p>Semplice! Non spreca neanche un secondo per essere deciso.<br />
-          Analizza tutte le millemila possibilità e, solo all’ultimo secondo, compie la sua scelta.
-          (In effetti è molto più coraggioso di quello che si pensi)
+            Analizza tutte le millemila possibilità e, solo all’ultimo secondo, compie la sua scelta.
+            (In effetti è molto più coraggioso di quello che si pensi)
         </p>
         <p>E poi…</p>
         <p>
@@ -21,8 +21,8 @@ class Main extends Component {
           va a teatro<br />
           ascolta playlist cioccolatose
         </p>
-        <p>Per entrare a far parte della più grande community di Indecisi seguici sui social e iscriviti alla nostra newsletter<br />
-          (Tranquillo, ti manderemo poche email. Forse.)
+        <p>Per entrare a far parte della più grande community di Indecisi seguici sui social Facebook e<br />
+           Instagram o scrivici a movimento@cioccolatoallarancia.com
         </p>
       </Fragment>
     );
