@@ -225,7 +225,7 @@ class Main extends React.Component {
                         </Link>
                         <div className="poster-text">
                             <span>prossima data</span>
-                            19 - 20 settembre Maggio Teatro Portaportese - Roma
+                            19 - 20 settembre Teatro Portaportese - Roma
                             {this.state.showWhatsappInfo && <div className="whatsapp-info">
                                 <span className="close" onClick={() => this.toggleWhatsappInfo()}>X</span>
                                 <a href="https://api.whatsapp.com/send?phone=393932191275&text=%20Hola!"
